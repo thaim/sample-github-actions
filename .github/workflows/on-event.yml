@@ -17,10 +17,11 @@ jobs:
     permissions:
       contents: read
     steps:
-    - run: echo "event=${{ toJson(github.event) }} github=${{ toJson(github) }}"
+    - run: echo "event=${{ toJson(github.event) }}"
+    - run: echo "github=${{ toJson(github) }}"
     - run: echo "event on push to main branch"
       if: ${{ github.event.ref == 'main' }}
     - run: echo "event on PR merged into main branch"
-      if: ${{ github.event.pull_request.merged == true && github.base_ref == 'master' }}
+      if: ${{ github.event.pull_request.merged == true && github.base_ref == 'main' }}
     - run: echo "else"
       if: ${{ github.event.ref != 'main' && (github.event.pull_request.merged != true || github.base_ref != 'master') }}
