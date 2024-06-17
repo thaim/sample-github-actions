@@ -1,0 +1,12 @@
+name: env-object
+
+on:
+  workflow_dispatch:
+
+jobs:
+  env-object:
+    runs-on: ubuntu-latest
+#    env:
+#      LANGSET: ${{ toJSON({"data": [{"lang":"python","version":"python3.9"},{"lang":"ruby","version":"ruby3.3"}]}) }}
+    steps:
+      - run: echo $LANGSET

@@ -1,0 +1,19 @@
+name: check workflow event
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+
+jobs:
+  show:
+    name: show context for each event
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - run: echo "event=${{ toJson(github.event) }} github=${{ toJson(github) }}"
