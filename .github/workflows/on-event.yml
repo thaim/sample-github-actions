@@ -20,7 +20,7 @@ jobs:
 #     - run: echo "event=${{ toJson(github.event) }}"
 #     - run: echo "github=${{ toJson(github) }}"
     - run: echo "event on push to main branch"
-      if: ${{ github.event.ref == 'main' }}
+      if: ${{ github.event.ref == 'ref/heads/main' }}
     - run: echo "event on PR merged into main branch"
       if: ${{ github.event.pull_request.merged == true && github.base_ref == 'main' }}
     - run: echo "else"
