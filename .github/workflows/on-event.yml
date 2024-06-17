@@ -3,7 +3,7 @@ name: check workflow event
 on:
   push:
     branches: main
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - synchronize
@@ -21,7 +21,7 @@ jobs:
 #     - run: echo "github=${{ toJson(github) }}"
     - run: echo "event on push to main branch"
       if: ${{ github.event.ref == 'ref/heads/main' }}
-    - run: echo "event on PR merged into main branch"
+    - run: echo "event on PR merged into main branch with ${{ github.event.pull_request.head.sha }}"
       if: ${{ github.event.pull_request.merged == true && github.base_ref == 'main' }}
     - run: echo "else"
       if: ${{ github.event.ref != 'main' && (github.event.pull_request.merged != true || github.base_ref != 'main') }}
