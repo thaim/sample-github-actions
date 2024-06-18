@@ -17,8 +17,7 @@ jobs:
     permissions:
       contents: read
     steps:
-#     - run: echo "event=${{ toJson(github.event) }}"
-#     - run: echo "github=${{ toJson(github) }}"
+    - run: echo "github.sha = ${{ github.sha }}"
     - run: echo "event on push to main branch"
       if: ${{ github.event.ref == 'ref/heads/main' }}
     - run: echo "event on PR merged into main branch"
